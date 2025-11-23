@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do App with Local Storage</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 { text-align: center; margin-bottom: 15px; }
+    input[type="text"] {
+      width: 70%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 8px 10px;
+      border: none;
+      background: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px;
+      background: #f9f9f9;
+      border-radius: 5px;
+      margin-bottom: 5px;
+    }
+    .edit, .delete {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #007bff;
+    }
+    .edit:hover { color: #28a745; }
+    .delete:hover { color: #dc3545; }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h2>📝 To-Do List</h2>
+    <input type="text" id="itemInput" placeholder="Add new item...">
+    <button id="addBtn">Add</button>
+
+    <ul id="itemList"></ul>
+  </div>
+
+  <script>
+    $(document).ready(function() {
+      // Load from localStorage
+      let items = JSON.parse(localStorage.getItem('todoList')) || [];
+      renderList();
+
+      // Add new item
+      $('#addBtn').click(function() {
+        const newItem = $('#itemInput').val().trim();
+        if (newItem) {
+          items.push(newItem);
+          saveAndRender();
+          $('#itemInput').val('');
+        }
+      });
+
+      // Delete item
+      $('#itemList').on('click', '.delete', function() {
+        const index = $(this).parent().data('index');
+        items.splice(index, 1);
+        saveAndRender();
+      });
+
+      // Edit item
+      $('#itemList').on('click', '.edit', function() {
+        const index = $(this).parent().data('index');
+        const currentText = items[index];
+        const newText = prompt('Edit item:', currentText);
+        if (newText !== null && newText.trim() !== '') {
+          items[index] = newText.trim();
+          saveAndRender();
+        }
+      });
+
+      // Save list & render UI
+      function saveAndRender() {
+        localStorage.setItem('todoList', JSON.stringify(items));
+        renderList();
+      }
+
+      // Render list
+      function renderList() {
+        $('#itemList').empty();
+        items.forEach((item, index) => {
+          $('#itemList').append(`
+            <li data-index="${index}">
+              <span>${item}</span>
+              <div>
+                <button class="edit">✏️</button>
+                <button class="delete">🗑️</button>
+              </div>
+            </li>
+          `);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
