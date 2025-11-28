@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; padding:20px; background:#fff; }
+.box { width:150px; height:70px; border:1px solid #ccc; display:flex; align-items:center; justify-content:center; margin: 10px 0; }
+.highlight { background: #ffeb3b; }
+.posbox { position: relative; left: 30px; top: 10px; }

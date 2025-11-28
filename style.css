@@ -1,0 +1,4 @@
+body { font-family: Arial, sans-serif; margin: 20px; background:#f9f9f9; }
+.container { max-width:700px; margin:0 auto; background:white; padding:20px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.05); }
+#message { margin-top:10px; padding:8px; border:1px solid #ddd; border-radius:4px; background:#eef; }
+#scrollTopImg { cursor:pointer; display:block; margin-top:10px; }

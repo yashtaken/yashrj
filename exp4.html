@@ -1,0 +1,42 @@
+<!doctype html>
+<html ng-app="billApp">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Experiment 4 - Bill Payment Form</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <link rel="stylesheet" href="exp4.css">
+  <script src="exp4.js" defer></script>
+</head>
+<body ng-controller="BillController as bill">
+  <div class="container">
+    <h2>Bill Payment Record</h2>
+    <form name="billForm" ng-submit="bill.addRecord(billForm.$valid)" novalidate>
+      <label>
+        Name: <input type="text" ng-model="bill.newRecord.name" required />
+      </label>
+      <label>
+        Amount: <input type="number" ng-model="bill.newRecord.amount" required min="0" />
+      </label>
+      <label>
+        Date: <input type="date" ng-model="bill.newRecord.date" required />
+      </label>
+      <button type="submit">Add Record</button>
+    </form>
+
+    <h3>Records</h3>
+    <table>
+      <thead><tr><th>ID</th><th>Name</th><th>Amount</th><th>Date</th><th>Action</th></tr></thead>
+      <tbody>
+        <tr ng-repeat="r in bill.records">
+          <td>{{r.id}}</td>
+          <td>{{r.name}}</td>
+          <td>{{r.amount | currency}}</td>
+          <td>{{r.date | date:'yyyy-MM-dd'}}</td>
+          <td><button ng-click="bill.deleteRecord(r.id)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

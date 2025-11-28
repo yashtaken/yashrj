@@ -1,0 +1,41 @@
+<!doctype html>
+<html ng-app="tableApp">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Experiment 3 - AngularJS table</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="exp3.js" defer></script>
+  <style>
+    body{font-family:Arial;margin:20px;}
+    th { cursor:pointer; }
+    table { border-collapse:collapse; width:80%; }
+    td, th { border:1px solid #ccc; padding:8px; text-align:left; }
+    tr:nth-child(even) { background:#f7f7f7; }
+  </style>
+</head>
+<body ng-controller="TableController as ctrl">
+  <h2>Students Table</h2>
+
+  <label>Filter: <input ng-model="ctrl.searchText" placeholder="search.." /></label>
+
+  <table>
+    <thead>
+      <tr>
+        <th ng-click="ctrl.sort('id')">ID</th>
+        <th ng-click="ctrl.sort('name')">Name</th>
+        <th ng-click="ctrl.sort('age')">Age</th>
+        <th ng-click="ctrl.sort('grade')">Grade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="s in ctrl.students | filter:ctrl.searchText | orderBy:ctrl.sortKey:ctrl.reverse">
+        <td>{{s.id}}</td>
+        <td>{{s.name}}</td>
+        <td>{{s.age}}</td>
+        <td>{{s.grade}}</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>
