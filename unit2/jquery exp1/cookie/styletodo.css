@@ -1,0 +1,204 @@
+/* RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+body{
+    font-family:"Poppins",sans-serif;
+}
+
+/* HEADER TOP BAR */
+.header{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:25px 35px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
+}
+
+/* NAV ITEMS */
+.logo,
+.nav a{
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+.logo:hover,
+.nav a:hover{
+    text-shadow:0 0 10px rgba(255,255,255,.7);
+    transform:scale(1.04);
+}
+
+/* LAYOUT */
+.home{
+    display:flex;
+    justify-content:space-between;
+    padding:150px 100px;
+    height:100vh;
+    background:url('coffeevig.png') no-repeat center/cover;
+}
+
+/* HERO TEXT */
+.content{
+    max-width:550px;
+    color:#fff;
+}
+
+/* MAIN CARD */
+.todo-wrapper{
+    width:450px;
+    padding:25px;
+    border-radius:18px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(6px);
+    color:#fff;
+    animation:fadeIn .7s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+}
+
+/* INPUT BAR */
+#todoText{
+    width:100%;
+    height:50px;
+    padding:0 16px;
+    border-radius:30px;
+    border:1px solid #fff;
+    background:rgba(255,255,255,.1);
+    color:#fff;
+    outline:none;
+    transition:0.3s ease;
+}
+#todoText:hover,
+#todoText:focus{
+    background:rgba(255,255,255,.22);
+    box-shadow:0 0 12px rgba(255,255,255,.3);
+}
+
+/* BUTTON MAIN */
+.btn{
+    width:100%;
+    height:45px;
+    margin-top:12px;
+    border:none;
+    cursor:pointer;
+    border-radius:30px;
+    color:#fff;
+    background:linear-gradient(90deg,#1e0b04,#704028);
+    transition:0.25s ease;
+}
+.btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 0 10px rgba(255,215,185,.5);
+}
+
+/* TASK LIST */
+#todoList{
+    margin-top:25px;
+    list-style:none;
+    max-height:350px;
+    overflow-y:auto;
+    padding-right:10px;
+}
+
+/* TASK ITEM */
+#todoList li{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:10px 12px;
+    margin-bottom:12px;
+    border-radius:10px;
+    border:1px solid rgba(255,255,255,.6);
+    background:rgba(255,255,255,.12);
+    transition:.25s;
+}
+#todoList li:hover{
+    transform:translateX(4px);
+    background:rgba(255,255,255,.18);
+}
+#todoList li.done{
+    text-decoration:line-through;
+    opacity:.6;
+}
+
+/* TASK BUTTONS */
+.todo-buttons button{
+    background:none;
+    border:none;
+    color:#ffd7ba;
+    cursor:pointer;
+    margin-left:10px;
+    transition:.25s;
+}
+.todo-buttons button:hover{
+    color:#fff;
+}
+
+/* STATUS TEXT */
+#status{
+    margin-top:8px;
+    text-align:center;
+    color:#ffd4b8;
+    font-size:.85em;
+}
+
+/* MODAL */
+#editModal{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    backdrop-filter:blur(4px);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999;
+}
+
+.modal-card{
+    width:350px;
+    padding:22px;
+    border-radius:16px;
+    background:rgba(255,255,255,.13);
+    border:1px solid rgba(255,255,255,.5);
+    text-align:center;
+    color:#fff;
+}
+
+.modal-card input{
+    width:100%;
+    height:42px;
+    padding:0 12px;
+    border-radius:12px;
+    border:none;
+    background:rgba(255,255,255,.15);
+    color:#fff;
+    margin:12px 0;
+}
+
+.modal-btns button{
+    width:48%;
+    height:40px;
+    margin-top:10px;
+    border-radius:12px;
+    cursor:pointer;
+    border:none;
+    color:#fff;
+    background:linear-gradient(90deg,#1e0b04,#704028);
+    transition:.25s;
+}
+.modal-btns button:hover{
+    opacity:.85;
+    transform:translateY(-2px);
+}

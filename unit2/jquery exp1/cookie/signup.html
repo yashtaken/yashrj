@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C137 – Sign Up</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+<header class="header">
+    <a href="./index.html" class="logo"><ion-icon name="cafe"></ion-icon><b>C 137</b></a>
+    <nav class="nav">
+        <a href="index.html">HOME</a>
+        <a href="#">CONTACT</a>
+        <a href="#">ABOUT US</a>
+    </nav>
+</header>
+
+<section class="home">
+    <div class="content">
+        <h2><b>Create your account</b></h2>
+        <p><b>Your journey starts with a single brew</b></p>
+    </div>
+
+    <div class="wrapper-login">
+        <h2>Sign Up</h2>
+
+        <form id="signupForm">
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="person"></ion-icon>
+                </span>
+                <input type="text" id="name" required>
+                <label>Enter your name</label>
+            </div>
+
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="mail"></ion-icon>
+                </span>
+                <input type="email" id="email" required>
+                <label>Enter your email</label>
+            </div>
+
+            <div class="input-box">
+                <span class="icon">
+                    <ion-icon name="lock-closed"></ion-icon>
+                </span>
+                <input type="password" id="password" required>
+                <label>Create a password</label>
+            </div>
+
+            <button type="submit" class="btn">Sign Up</button>
+            <p id="msg"></p>
+
+            <div class="register-link">
+                <p>Already have an account? <a href="index.html">Login now</a></p>
+            </div>
+        </form>
+    </div>
+</section>
+
+<script src="signup.js"></script>
+</body>
+</html>
